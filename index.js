@@ -1,3 +1,72 @@
+function typeWriter(text, i, fnCallback) {
+    if (i < (text.length)) {
+        document.querySelector("#welcomeMessage").innerHTML = text.substring(0, i+1) +'<span aria-hidden="true"></span>';
+        setTimeout(function() {
+            typeWriter(text, i + 1, fnCallback)
+        }, 100);
+    } else if (typeof fnCallback == 'function') {
+        setTimeout(fnCallback, 700);
+    }
+}
+
+
+window.onload = function() {
+    //欢迎语打字效果
+    document.getElementById("welcomeMessage").style.display = "block";
+    typeWriter(" 公元前2025年<br>有一位国王正在寻找一位数学家<br>试图解开一道名为2048的难题<br>你愿意试试吗?", 0, function(){
+        document.getElementById("startButton").style.display = "inline-block";
+    });
+    //显示输入框
+    document.getElementById("startButton").addEventListener("click", function() {
+        document.getElementById("欢迎页").style.display = "none";
+        document.getElementById("nameFormContainer").style.display = "block";
+    });
+    //enter键监听
+    document.getElementById("nameInput").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            submitName();
+        }
+    });
+    // 点击“我准备好了”按钮的事件监听
+    document.getElementById("startGameButton").addEventListener("click", submitName);
+}
+// 显示规则函数
+function showRules() {
+    document.getElementById("rulesContainer").style.display = "block";
+}
+
+// 关闭规则函数
+function closeRules() {
+    document.getElementById("rulesContainer").style.display = "none";
+}
+
+// 绑定关闭按钮事件
+document.getElementById("closeRules").addEventListener("click", closeRules);
+
+function submitName() {
+    var name = document.getElementById("nameInput").value.trim();
+    if (name) {
+        document.getElementById("nameFormContainer").style.display = "none";
+        document.getElementById("game").style.display = "block";
+        // 初始化游戏
+        game.initial();
+    }
+    else {
+        alert("请输入你的名字！");
+    }
+}
+
+document.getElementById('game').addEventListener('click', function(event) {
+    var target = event.target;
+
+    if (target.id === 'impossible') {
+        window.OpenLevel(7);
+    } else if (target.id === 'rules-btn') {
+        ShowRules();
+    }
+});
+
 var game = {
 
     data: [],//储存游戏数据
@@ -36,7 +105,7 @@ var game = {
     },
     //在数组中上生成随机数
 
-    getRandomNumber: function () {
+    getRandomNumber: function() {
         var di = [];
         var dj = [];
         var index = 0;

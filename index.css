@@ -1,7 +1,80 @@
 <style>
 body {
-    background: #faf8ef;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #c0825a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
+#欢迎页 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    max-width: 600px;
+    box-sizing: border-box;
+    color: #C0825A;
+    text-align: center;
+    z-index: 10;
+}
+
+    img {
+        margin-top: 100px;
+        margin-bottom: 20px;
+        width: 100px; /* 设置图片宽度为200像素 */
+        height: auto; /* 根据宽度等比例缩放高度 */
+        justify-content: center;
+        align-items: center;
+    }
+    #welcomeMessage, #homepage-container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #FFCCCC;
+        font-size: 24px;
+        }
+    #startButton {
+        display: none; /* 隐藏按钮 */
+        background-color: #FF99CC;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 20px;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+         }
+
+      #nameFormContainer {
+             display: none;
+             margin-top: 20px;
+             justify-content: center;
+             align-items: center;
+             position: absolute;
+             top: 50%;
+             left: 50%;
+             transform: translate(-50%, -50%);
+             z-index: 10;
+           }
+      #nameForm {
+             display: block;
+         }
+
+      #startGameButton {
+          display: block;
+          background-color: #FF99CC;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          font-size: 20px;
+          cursor: pointer;
+          justify-content: center;
+          align-items: center;
+           }
 
 .title {
     display: inline-block;
@@ -112,7 +185,7 @@ a:active {
 .gameOverContainer {
     display: none;
     position: absolute;
-    top: 350px;
+    top: 170px;
     left: 470px;
     background-color: rgba(0, 0, 0, 0.4);
     color: black;
@@ -121,20 +194,22 @@ a:active {
     border-radius: 10px;
     font-size: 30px;
     text-align: center;
+     z-index: 10;
 }
 
 .gameWinContainer {
     display: none;
     position: absolute;
-    top: 350px;
+    top: 170px;
     left: 470px;
-    background-color: rgba(139, 197, 89, 0.4);
-    color: #f67c5f;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: black;
     height: 495px;
     width: 495px;
     border-radius: 10px;
     font-size: 30px;
     text-align: center;
+    z-index: 10;
 }
 
 .container_base div {
@@ -288,5 +363,53 @@ a:active {
 
 .n2048 {
     background-color: #09c
+}
+.rules {
+    display: block;
+    width: 80px;
+    height: 45px;
+    font-size: 25px;
+    text-decoration-line: none;
+    text-align: center;
+    line-height: 45px;
+    background-color: #CAC0B4;
+    border-radius: 5px;
+    color: #faf8ef;
+    position: absolute;
+    top: 10px;
+    left: 270px;
+}
+/* 规则容器样式 */
+#rulesContainer {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 100;
+}
+
+#rulesContainer h2 {
+    margin-top: 0;
+    color: #776e65;
+}
+#rulesContainer p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #776e65;
+}
+#closeRules {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #FF99CC;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
 }
 </style>
